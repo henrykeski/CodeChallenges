@@ -1,0 +1,57 @@
+#include <iostream>
+using namespace std;
+int countDeafRats(const std::string &town);
+
+int countDeafRats(const string &town) {
+    int i = 0, l = 0, last, first;
+    int count = 0;
+    int position = 0;
+    int deafmice = 0;
+    string temp = town;
+for(int c = 0; c <= temp.length()-1; c++){
+if(((temp.at(c)) != 'O') && (temp.at(c) != '~')){
+    count++;
+    if(count == temp.length()){
+        return deafmice;
+    }
+}
+}
+
+    for (int n = 0; n <= (temp.length()-1); n++) {
+        if (temp.at(n) == 'P') {
+            position = n;
+        }
+    }
+
+
+    while (((temp.at(i)) != 'O') && (temp.at(i) != '~')) {
+        i++;
+    }
+
+    first = i;
+  
+
+    while (((temp.at((temp.length() - 1) - l)) != 'O') && ((temp.at(((temp.length() - 1) - l)) != '~'))) { //gets last in thing
+        l++;
+    }
+    last = (temp.length() - 1) - l;
+
+    for (int r = first; r <= position; r++) {
+        if (temp.at(r) == '~') {
+            r++;
+        } else if (temp.at(r) == 'O') {
+            deafmice++;
+            r++;
+        }
+    }
+
+    for (int b = last; b >= position; b--) {
+        if (temp.at(b) == '~') {
+            b--;
+        } else if (temp.at(b) == 'O') {
+            deafmice++;
+            b--;
+        }
+    }
+    return deafmice;
+}
