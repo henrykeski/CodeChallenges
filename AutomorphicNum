@@ -1,0 +1,25 @@
+#include <string>
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+string autoMorphic (int number) {
+    int digits=0, reference, square, finalsum;
+    square = pow(number, 2);
+    reference = number;
+
+    while(reference != 0){
+         reference = reference / 10;
+        digits++;
+    }
+    double mod = pow(10.0, digits);
+
+
+    finalsum = fmod(square , mod);
+    if(number == finalsum){
+        return "Automorphic";
+    }
+    else{
+        return "Not!!";
+    }
+}
